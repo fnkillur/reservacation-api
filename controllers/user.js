@@ -2,9 +2,11 @@ const Users = require('../models').Users;
 
 module.exports = {
     list(req, res) {
-        return Users.findAll()
-            .then(users => (res.status(200).send(users)))
-            .catch(error => (res.status(400).send(error)));
+        return Users.findAll({
+            order: [['id', 'DESC']]
+        })
+            .then(users => res.status(200).send(users))
+            .catch(error => res.status(400).send(error));
     },
 
     getById(req, res) {
@@ -16,13 +18,13 @@ module.exports = {
 
                 return res.status(200).send(user);
             })
-            .catch(error => (res.status(400).send(error)));
+            .catch(error => res.status(400).send(error));
     },
 
     add(req, res) {
         return Users.create()
             .then(user => res.status(201).send(user))
-            .catch(error => (res.status(400).send(error)));
+            .catch(error => res.status(400).send(error));
     },
 
     update(req, res) {
@@ -37,10 +39,10 @@ module.exports = {
                     password: req.body.password || user.password,
                     name: req.body.name || user.name
                 })
-                    .then(user => (res.status(200).send(user)))
-                    .catch(error => (res.status(400).send(error)));
+                    .then(user => res.status(200).send(user))
+                    .catch(error => res.status(400).send(error));
             })
-            .catch(error => (res.status(400).send(error)));
+            .catch(error => res.status(400).send(error));
     },
 
     delete(req, res) {
@@ -52,8 +54,8 @@ module.exports = {
 
                 return user.destory()
                     .then(() => res.status(204).send())
-                    .catch(error => (res.status(400).send(error)));
+                    .catch(error => res.status(400).send(error));
             })
-            .catch(error => (res.status(400).send(error)));
+            .catch(error => res.status(400).send(error));
     }
 }
