@@ -5,7 +5,15 @@ module.exports = (sequelize, DataTypes) => {
     address: DataTypes.STRING,
     phone: DataTypes.STRING,
     description: DataTypes.TEXT,
-    imgsrc: DataTypes.STRING
+    imgSrc: DataTypes.STRING,
+    latitude: DataTypes.DECIMAL(13,10),
+    longitude: DataTypes.DECIMAL(13,10)
   }, {});
+  Stores.associate = (models) => {
+    Stores.hasMany(models.Reviews, {
+      foreignKey: 'storeId',
+      sourceKey: 'id'
+    });
+  };
   return Stores;
 };
