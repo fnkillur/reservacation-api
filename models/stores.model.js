@@ -1,10 +1,13 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Stores = sequelize.define('Stores', {
-    name: DataTypes.STRING,
     address: DataTypes.STRING,
-    phone: DataTypes.STRING,
-    description: DataTypes.TEXT,
+    detail_address: DataTypes.STRING,
+    sms: DataTypes.STRING,
+    email: DataTypes.STRING,
+    ceo_name: DataTypes.STRING,
+    store_name: DataTypes.STRING,
+    store_description: DataTypes.TEXT,
     imgSrc: DataTypes.STRING,
     latitude: DataTypes.DECIMAL(13,10),
     longitude: DataTypes.DECIMAL(13,10)

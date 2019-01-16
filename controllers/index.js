@@ -1,7 +1,7 @@
-const user = require('./user');
-const store = require('./store');
-const review = require('./review');
-const storeImage = require('./storeImage');
+const user = require('./user.controller');
+const store = require('./store.controller');
+const review = require('./review.controller');
+const storeImage = require('./storeImage.controller');
 
 module.exports = {
     user,

@@ -11,14 +11,15 @@ router.get('/', function (req, res) {
 });
 
 // User Router
-router.get('/api/users', userController.list);
-router.get('/api/user/:id', userController.getById);
-router.post('/api/user', userController.add);
-router.put('api/user/:id', userController.update);
-router.delete('api/user/:id', userController.delete);
+router.get('/users', userController.list);
+router.post('/users', userController.add);
+router.get('/user/:id', userController.getById);
+router.put('/user/:id', userController.update);
+router.delete('/user/:id', userController.delete);
 
 // Store Router
-router.get('/api/stores', storeController.list);
-router.get('/api/store/:id', storeController.getById);
+router.get('/stores', storeController.list);
+router.post('/stores', storeController.add);
+router.get('/store/:id', storeController.getById);
 
 module.exports = router;
