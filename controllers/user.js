@@ -37,7 +37,8 @@ module.exports = {
                 return user.update({
                     email: req.body.email || user.email,
                     password: req.body.password || user.password,
-                    name: req.body.name || user.name
+                    name: req.body.name || user.name,
+                    role: req.body.role || user.role
                 })
                     .then(user => res.status(200).send(user))
                     .catch(error => res.status(400).send(error));
@@ -52,7 +53,7 @@ module.exports = {
                     return res.status(404).send({ message: 'User not found' });
                 }
 
-                return user.destory()
+                return user.destroy()
                     .then(() => res.status(204).send())
                     .catch(error => res.status(400).send(error));
             })

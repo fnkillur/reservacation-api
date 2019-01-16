@@ -4,6 +4,8 @@ var router = express.Router();
 // Controller
 const userController = require('../controllers').user;
 const storeController = require('../controllers').store;
+const storeImageController = require('../controllers').storeImage;
+const reviewController = require('../controllers').review;
 
 // GET home Page
 router.get('/', function (req, res) {
@@ -11,14 +13,20 @@ router.get('/', function (req, res) {
 });
 
 // User Router
-router.get('/api/users', userController.list);
-router.get('/api/user/:id', userController.getById);
-router.post('/api/user', userController.add);
-router.put('api/user/:id', userController.update);
-router.delete('api/user/:id', userController.delete);
+router.get('/users', userController.list);
+router.get('/user/:id', userController.getById);
+router.post('/user', userController.add);
+router.put('/user/:id', userController.update);
+router.delete('/user/:id', userController.delete);
 
 // Store Router
-router.get('/api/stores', storeController.list);
-router.get('/api/store/:id', storeController.getById);
+router.get('/stores', storeController.list);
+router.get('/store/:id', storeController.getById);
+
+// StoreImage Router
+router.get('/storeImages/:storeId', storeImageController.getByStoreId);
+
+// Review Router
+router.get('/reviews/:storeId', reviewController.getByStoreId);
 
 module.exports = router;
