@@ -14,5 +14,7 @@ yarn-error.log*
 package-lock.json
 yarn-lock.json
 
+config/config.json
+
 # vagrant
 .vagrant

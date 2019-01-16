@@ -1,6 +1,7 @@
 const Stores = require('../models').Stores;
 const Reviews = require('../models').Reviews;
 const Users = require('../models').Users;
+const StoreImages = require('../models').StoreImages;
 
 module.exports = {
     list(req, res) {
@@ -16,14 +17,17 @@ module.exports = {
             where: {
                 id: req.params.id
             },
-            include: {
+            include: [{
                 model: Reviews,
                 include: {
                     model: Users,
                     attributes: ['id', 'name']
                 }
-            },
-            order: [[Reviews, 'id', 'DESC']]
+            }, {
+                model: StoreImages,
+                attributes: ['id', 'src']
+            }],
+            order: [[Reviews, 'id', 'DESC'], [StoreImages, 'id', 'DESC']]
         })
             .then((store) => {
                 if (!store) {
