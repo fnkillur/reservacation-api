@@ -14,6 +14,10 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'storeId',
       sourceKey: 'id'
     });
+    Stores.hasMany(models.StoreImages, {
+      foreignKey: 'storeId',
+      sourceKey: 'id'
+    });
   };
   return Stores;
 };

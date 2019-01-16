@@ -2,7 +2,7 @@
   "development": {
     "username": "dev",
     "password": "reservacation",
-    "database": "development",
+    "database": "reservacation",
     "host": "10.0.0.40",
     "dialect": "mysql",
     "pool": {
@@ -13,9 +13,9 @@
     "logging": true
   },
   "test": {
-    "username": "dev",
+    "username": "test",
     "password": "reservacation",
-    "database": "test",
+    "database": "reservacation",
     "host": "10.0.0.40",
     "dialect": "mysql",
     "pool": {
@@ -26,9 +26,9 @@
     "logging": true
   },
   "production": {
-    "username": "dev",
+    "username": "prod",
     "password": "reservacation",
-    "database": "production",
+    "database": "reservacation",
     "host": "10.0.0.40",
     "dialect": "mysql",
     "pool": {
