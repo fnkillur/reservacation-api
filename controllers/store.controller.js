@@ -35,5 +35,22 @@ module.exports = {
                 return res.status(200).send(storeAndImages);
             })
             .catch(error => res.status(400).send(error));
-    }
+    },
+
+    add: (req, res) => {
+        let form = {
+            email: req.body.email,
+            sms: req.body.sms,
+            address: req.body.address,
+            detail_address: req.body.detail_address,
+            store_name: req.body.store_name,
+            ceo_name: req.body.ceo_name,
+            latitude: req.body.latitude,
+            longitude: req.body.longitude,
+        };
+        Stores
+            .create(form)
+            .then(partner => res.status(201).send(partner))
+            .catch(error => res.status(400).send(error));
+    },
 };

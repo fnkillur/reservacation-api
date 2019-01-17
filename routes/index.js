@@ -22,6 +22,7 @@ router.delete('/user/:id', userController.delete);
 // Store Router
 router.get('/stores', storeController.list);
 router.get('/store/:id', storeController.getById);
+router.post('/stores', storeController.add);
 
 // StoreImage Router
 router.get('/storeImages/:storeId', storeImageController.getByStoreId);

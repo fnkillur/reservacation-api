@@ -8,25 +8,41 @@ module.exports = {
                 primaryKey: true,
                 type: Sequelize.INTEGER
             },
-            name: {
-                type: Sequelize.STRING
-            },
             address: {
+                allowNull: false,
                 type: Sequelize.STRING
             },
-            phone: {
+            detail_address: {
+                allowNull: false,
                 type: Sequelize.STRING
             },
-            description: {
+            email: {
+                allowNull: false,
+                type: Sequelize.STRING
+            },
+            sms: {
+                allowNull: false,
+                type: Sequelize.STRING
+            },
+            store_name: {
+                type: Sequelize.STRING
+            },
+            store_description: {
                 type: Sequelize.TEXT
+            },
+            ceo_name: {
+                allowNull: false,
+                type: Sequelize.STRING
             },
             imgSrc: {
                 type: Sequelize.STRING
             },
             latitude: {
+                allowNull: false,
                 type: Sequelize.DECIMAL(13, 10)
             },
             longitude: {
+                allowNull: false,
                 type: Sequelize.DECIMAL(13, 10)
             },
             createdAt: {
