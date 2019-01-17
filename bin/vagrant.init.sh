@@ -10,6 +10,8 @@ sudo debconf-set-selections <<< 'mysql-server-5.6 mysql-server/root_password pas
 sudo debconf-set-selections <<< 'mysql-server-5.6 mysql-server/root_password_again password reservacation'
 sudo apt-get -y install mysql-server-5.6
 sudo apt-get -y install mysql-client-5.6
+sudo cp /home/ubuntu/app/reservacation-api/bin/my.cnf /etc/mysql
+sudo service mysql restart
 echo -e "\033[33m"mysql install with init end"\033[0m"
 
 echo -e "\033[33m"          nginx install with init start          "\033[0m"
