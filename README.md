@@ -1,17 +1,28 @@
 # reservacation-api
 제주도 카페 예약 사이트 - api
 
-ROUTE | METHOD | DESCRIPTION
----|---|---
-/api/users | GET | 모든 user 데이터 조회
-/api/user/:id | GET | id 값으로 데이터 조회
-/api/user | POST | user 데이터 생성
-/api/user/:id | PUT | user 데이터 수정
-/api/user/:id | DELETE | user 데이터 제거
-
 # 시작하기
 
-* sequalize-cli 설치
+* sequelize-cli global 설치
 ```
-npm i -g sequalize-cli
+$ npm i -g sequelize-cli
+```
+* vagrant 설치
+```
+$ vagrant up
+```
+* vagrant 프로비저닝
+```
+$ vagrant provision
+```
+* vagrant 접속 후 서버 실행
+```
+$ vagrant ssh 
+$ cd /home/ubuntu/app/reservacation-api
+$ npm start
+```
+
+* 로컬피씨 hosts 등록
+``` 
+$ echo '10.0.0.40    api.reservacation.com' | sudo tee -a /etc/hosts
 ```
