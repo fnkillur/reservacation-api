@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     }, {});
     Users.associate = (models) => {
         Users.hasMany(models.Reviews, {
-            foreignKey: 'writerId',
+            foreignKey: 'writer_id',
             sourceKey: 'id'
         });
     };

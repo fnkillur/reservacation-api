@@ -21,8 +21,8 @@ module.exports = {
                 attributes: ['id', 'src'],
             }],
             order: [[Stores.associations.StoreImages, 'id', 'DESC']],
-            limit: parseInt(req.query.perPageNo),
-            offset: req.query.perPageNo * req.query.pageNo
+            limit: parseInt(req.query.perPageNo) || 20,
+            offset: (req.query.perPageNo || 20) * req.query.pageNo
         })
             .then(result => {
                 let storeAndImages = {
