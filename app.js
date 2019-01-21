@@ -4,23 +4,38 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var cors = require('cors');
+const swaggerUi = require('swagger-ui-express');
+const swaggerJSDoc = require('swagger-jsdoc');
 
-var whitelist = ['http://localhost:3000', 'http://127.0.0.1:3000'];
-
-var corsOptions = {
-
-    origin: function (origin, callback) {
-
-        var isWhitelisted = whitelist.indexOf(origin) !== -1;
-
-        callback(null, isWhitelisted);
-
-        // callback expects two parameters: error and options
-
+var swaggerDefinition = {
+    info: {
+        title: 'RESERVACATION API',
+        version: '1.0.0',
+        description: 'reservacation api 가이드입니다.',
     },
-
+    // securityDefinitions: {
+    //     jwt: {
+    //         type: 'apiKey',
+    //         name: 'Authorization',
+    //         in: 'header'
+    //     }
+    // },
+    // security: [
+    //     { jwt: [] }
+    // ]
+};
+var options = {
+    swaggerDefinition: swaggerDefinition,
+    apis: ["routes/index.js"],
+};
+var swaggerSpec = swaggerJSDoc(options);
+var whitelist = ['http://localhost:3000', 'http://127.0.0.1:3000'];
+var corsOptions = {
+    origin: function (origin, callback) {
+        var isWhitelisted = whitelist.indexOf(origin) !== -1;
+        callback(null, isWhitelisted);
+    },
     credentials: true
-
 };
 
 var app = express();
@@ -39,6 +54,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
