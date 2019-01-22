@@ -2,17 +2,19 @@ const Reviews = require('../models').Reviews;
 
 module.exports = {
     getByStoreId(req, res) {
+        let perPageNo = parseInt(req.query.perPageNo || 20);
+        let pageNo = parseInt(req.query.pageNo || 0);
         return Reviews.findAndCountAll({
             where: {
                 store_id: req.params.storeId
             },
             order: [['id', 'DESC']],
-            limit: parseInt(req.query.perPageNo, 10) || 20,
-            offset: (req.query.perPageNo || 20) * req.query.pageNo
+            limit: perPageNo,
+            offset: perPageNo * pageNo
         })
             .then(result => {
                 let reviews = {
-                    count: result.count,
+                    totalPageCount: Math.ceil(result.count / perPageNo) - 1,
                     data: result.rows
                 }
                 res.status(200).send(reviews)

@@ -21,16 +21,11 @@ module.exports = {
                 attributes: ['id', 'src'],
             }],
             order: [[Stores.associations.StoreImages, 'id', 'DESC']],
-            limit: parseInt(req.query.perPageNo) || 20,
-            offset: (req.query.perPageNo || 20) * req.query.pageNo
         })
             .then(result => {
                 let storeAndImages = {
                     store: result.rows[0],
-                    images: {
-                        count: (result.rows[0].StoreImages.length && result.count) || 0,
-                        data: result.rows[0].StoreImages
-                    }
+                    images: result.rows[0].StoreImages
                 }
                 return res.status(200).send(storeAndImages);
             })
