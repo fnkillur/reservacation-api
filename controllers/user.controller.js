@@ -1,3 +1,4 @@
+const crypto = require('crypto');
 const Users = require('../models').Users;
 
 module.exports = {
@@ -21,10 +22,27 @@ module.exports = {
             .catch(error => res.status(400).send(error));
     },
 
-    add(req, res) {
-        return Users.create()
-            .then(user => res.status(201).send(user))
-            .catch(error => res.status(400).send(error));
+    register(res, req) {
+        let salt = Math.round((new Date().valueOf() * Math.random())) + '';
+        let hashPassword = crypto.createHash('sha512').update(req.params.password + salt).digest('hex');
+
+        return Users.findOrCreate({
+            where: {
+                email: req.params.email
+            },
+            default: {
+                password: hashPassword,
+                salt: salt,
+                name: req.params.name,
+                role: req.params.role || 'user'
+            }
+        }).spread((user, created) => {
+            if (created) {
+                res.status(200).send(user);
+            } else {
+                res.status(400).send({ message: 'This email already exist' })
+            }
+        }).catch(error => res.status(400).send(error));;
     },
 
     update(req, res) {

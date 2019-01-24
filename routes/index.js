@@ -15,7 +15,7 @@ router.get('/', function (req, res) {
 // User Router
 router.get('/users', userController.list);
 router.get('/user/:id', userController.getById);
-router.post('/users', userController.add);
+router.post('/users', userController.register);
 router.put('/user/:id', userController.update);
 router.delete('/user/:id', userController.delete);
 
