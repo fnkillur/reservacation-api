@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <table>
+      <tr>
+        <td>ROUTE</td>
+        <td>METHOD</td>
+        <td>DESCRIPTION</td>
+      </tr>
+      <tr>
+        <td>/api/users</td>
+        <td>GET</td>
+        <td>모든 user 데이터 조회</td>
+      </tr>
+      <tr>
+        <td>/api/users/:id</td>
+        <td>GET</td>
+        <td>id 값으로 데이터 조회</td>
+      </tr>
+    </table>
+  </body>
+</html>

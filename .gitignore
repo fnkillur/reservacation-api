@@ -12,6 +12,10 @@ yarn-error.log*
 .idea
 
 package-lock.json
+yarn-lock.json
+npm-debug.log
+
+config/config.json
 
 # vagrant
 .vagrant
