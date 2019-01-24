@@ -8,11 +8,11 @@ module.exports = {
                 primaryKey: true,
                 type: Sequelize.INTEGER
             },
-            storeId: {
+            store_id: {
                 allowNull: false,
                 type: Sequelize.INTEGER
             },
-            writerId: {
+            writer_id: {
                 allowNull: false,
                 type: Sequelize.INTEGER
             },
@@ -22,7 +22,7 @@ module.exports = {
             description: {
                 type: Sequelize.STRING
             },
-            imgsrc: {
+            img_src: {
                 type: Sequelize.STRING
             },
             createdAt: {

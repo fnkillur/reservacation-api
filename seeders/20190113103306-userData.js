@@ -6,12 +6,21 @@ module.exports = {
             email: 'test1@naver.com',
             password: 'test1',
             name: '테스트1',
+            role: 'user',
             createdAt: '2019-01-13',
             updatedAt: '2019-01-13'
         }, {
             email: 'test2@naver.com',
             password: 'test2',
             name: '테스트2',
+            role: 'user',
+            createdAt: '2019-01-13',
+            updatedAt: '2019-01-13'
+        }, {
+            email: 'ceo1@naver.com',
+            password: 'ceo1',
+            name: 'ceo1',
+            role: 'ceo',
             createdAt: '2019-01-13',
             updatedAt: '2019-01-13'
         }], {});

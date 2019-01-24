@@ -1,6 +1,4 @@
 const Stores = require('../models').Stores;
-const Reviews = require('../models').Reviews;
-const Users = require('../models').Users;
 const StoreImages = require('../models').StoreImages;
 
 module.exports = {
@@ -13,28 +11,23 @@ module.exports = {
     },
 
     getById(req, res) {
-        return Stores.findAll({
+        return Stores.findAndCountAll({
+            subQuery: false,
             where: {
                 id: req.params.id
             },
             include: [{
-                model: Reviews,
-                include: {
-                    model: Users,
-                    attributes: ['id', 'name']
-                }
-            }, {
                 model: StoreImages,
-                attributes: ['id', 'src']
+                attributes: ['id', 'src'],
             }],
-            order: [[Reviews, 'id', 'DESC'], [StoreImages, 'id', 'DESC']]
+            order: [[Stores.associations.StoreImages, 'id', 'DESC']],
         })
-            .then((store) => {
-                if (!store) {
-                    return res.status(404).send({ message: 'Store not found' });
+            .then(result => {
+                let storeAndImages = {
+                    store: result.rows[0],
+                    images: result.rows[0].StoreImages
                 }
-
-                return res.status(200).send(store);
+                return res.status(200).send(storeAndImages);
             })
             .catch(error => res.status(400).send(error));
     },

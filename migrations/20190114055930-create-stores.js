@@ -8,33 +8,16 @@ module.exports = {
                 primaryKey: true,
                 type: Sequelize.INTEGER
             },
-            address: {
-                allowNull: false,
-                type: Sequelize.STRING
-            },
-            detail_address: {
-                allowNull: false,
-                type: Sequelize.STRING
-            },
-            email: {
-                allowNull: false,
-                type: Sequelize.STRING
-            },
-            sms: {
-                allowNull: false,
-                type: Sequelize.STRING
-            },
             store_name: {
                 type: Sequelize.STRING
             },
             store_description: {
                 type: Sequelize.TEXT
             },
-            ceo_name: {
-                allowNull: false,
+            store_tel: {
                 type: Sequelize.STRING
             },
-            imgSrc: {
+            img_src: {
                 type: Sequelize.STRING
             },
             latitude: {
@@ -44,6 +27,26 @@ module.exports = {
             longitude: {
                 allowNull: false,
                 type: Sequelize.DECIMAL(13, 10)
+            },
+            address: {
+                allowNull: false,
+                type: Sequelize.STRING
+            },
+            detail_address: {
+                allowNull: false,
+                type: Sequelize.STRING
+            },
+            ceo_name: {
+                allowNull: false,
+                type: Sequelize.STRING
+            },
+            ceo_sms: {
+                allowNull: false,
+                type: Sequelize.STRING
+            },
+            ceo_email: {
+                allowNull: false,
+                type: Sequelize.STRING
             },
             createdAt: {
                 allowNull: false,

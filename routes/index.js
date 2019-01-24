@@ -4,6 +4,8 @@ var router = express.Router();
 // Controller
 const userController = require('../controllers').user;
 const storeController = require('../controllers').store;
+const storeImageController = require('../controllers').storeImage;
+const reviewController = require('../controllers').review;
 
 // GET home Page
 router.get('/', function (req, res) {
@@ -12,8 +14,8 @@ router.get('/', function (req, res) {
 
 // User Router
 router.get('/users', userController.list);
-router.post('/users', userController.add);
 router.get('/user/:id', userController.getById);
+router.post('/users', userController.register);
 router.put('/user/:id', userController.update);
 router.delete('/user/:id', userController.delete);
 
@@ -139,5 +141,12 @@ router.post('/stores', storeController.add);
  *                 $ref: '#/definitions/store'
  */
 router.get('/store/:id', storeController.getById);
+router.post('/stores', storeController.add);
+
+// StoreImage Router
+router.get('/storeImages/:storeId', storeImageController.getByStoreId);
+
+// Review Router
+router.get('/reviews/:storeId', reviewController.getByStoreId);
 
 module.exports = router;

@@ -16,7 +16,18 @@ module.exports = {
                 allowNull: false,
                 type: Sequelize.STRING
             },
+            salt: {
+                allowNull: false,
+                type: Sequelize.STRING
+            },
             name: {
+                type: Sequelize.STRING
+            },
+            phone: {
+                type: Sequelize.STRING
+            },
+            role: {
+                allowNull: false,
                 type: Sequelize.STRING
             },
             createdAt: {
