@@ -22,25 +22,28 @@ module.exports = {
             .catch(error => res.status(400).send(error));
     },
 
-    register(res, req) {
+    register(req, res) {
+        const userInfo = req.body;
+
         let salt = Math.round((new Date().valueOf() * Math.random())) + '';
-        let hashPassword = crypto.createHash('sha512').update(req.params.password + salt).digest('hex');
+        let hashPassword = crypto.createHash('sha512').update(userInfo.password + salt).digest('base64');
 
         return Users.findOrCreate({
             where: {
-                email: req.params.email
+                email: req.body.email
             },
-            default: {
+            defaults: {
                 password: hashPassword,
                 salt: salt,
-                name: req.params.name,
-                role: req.params.role || 'user'
+                name: userInfo.name,
+                phone: userInfo.phone,
+                role: userInfo.role || 'user'
             }
         }).spread((user, created) => {
             if (created) {
-                res.status(200).send(user);
+                return res.status(200).send({ user, message: '회원가입이 처리되었습니다.' });
             } else {
-                res.status(400).send({ message: 'This email already exist' })
+                return res.status(400).send({ message: '이미 등록된 이메일 입니다.' })
             }
         }).catch(error => res.status(400).send(error));;
     },

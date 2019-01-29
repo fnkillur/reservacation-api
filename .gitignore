@@ -16,6 +16,7 @@ yarn-lock.json
 npm-debug.log
 
 config/config.json
+config/jwt.js
 
 # vagrant
 .vagrant

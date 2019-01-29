@@ -6,6 +6,7 @@ const userController = require('../controllers').user;
 const storeController = require('../controllers').store;
 const storeImageController = require('../controllers').storeImage;
 const reviewController = require('../controllers').review;
+const authController = require('../controllers').auth;
 
 // GET home Page
 router.get('/', function (req, res) {
@@ -18,6 +19,10 @@ router.get('/user/:id', userController.getById);
 router.post('/users', userController.register);
 router.put('/user/:id', userController.update);
 router.delete('/user/:id', userController.delete);
+
+// Auth Router
+router.post('/auth/token', authController.getToken);
+router.post('/auth/newToken', authController.getNewToken);
 
 // Store Router
 router.get('/stores', storeController.list);

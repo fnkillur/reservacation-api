@@ -14,7 +14,7 @@ module.exports = {
         })
             .then(result => {
                 let reviews = {
-                    totalPageCount: Math.ceil(result.count / perPageNo) - 1,
+                    totalPageCount: Math.ceil(result.count / perPageNo),
                     data: result.rows
                 }
                 res.status(200).send(reviews)
