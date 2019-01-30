@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
         ceo_sms: DataTypes.STRING,
         ceo_email: DataTypes.STRING
     }, {});
-    Stores.associate = (models) => {
+    Stores.associate = models => {
         Stores.hasMany(models.Reviews, {
             foreignKey: 'store_id',
             sourceKey: 'id'

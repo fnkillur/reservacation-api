@@ -1,0 +1,8 @@
+{
+    "bookingStatus": {
+        "cancel": 0,
+        "pending": 1,
+        "waiting": 2,
+        "done": 3
+    }
+}

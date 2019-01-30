@@ -22,7 +22,7 @@ module.exports = {
             .catch(error => res.status(400).send(error));
     },
 
-    register(req, res) {
+    add(req, res) {
         const userInfo = req.body;
 
         let salt = Math.round((new Date().valueOf() * Math.random())) + '';

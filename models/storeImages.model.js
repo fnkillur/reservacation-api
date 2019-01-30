@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
         store_id: DataTypes.INTEGER,
         src: DataTypes.STRING
     }, {});
-    StoreImages.associate = (models) => {
+    StoreImages.associate = models => {
         StoreImages.belongsTo(models.Stores, {
             foreignKey: 'store_id'
         });

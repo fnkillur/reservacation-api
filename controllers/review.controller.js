@@ -1,3 +1,4 @@
+const jwt = require('jsonwebtoken');
 const Reviews = require('../models').Reviews;
 
 module.exports = {
@@ -19,6 +20,20 @@ module.exports = {
                 }
                 res.status(200).send(reviews)
             })
+            .catch(error => res.status(400).send(error));
+    },
+
+    add(req, res) {
+        let originToken = req.headers.authorization.split(' ')[1];
+        let decodedToken = jwt.verify(originToken, jwtConfig.secret);
+        let review = {
+            store_id: req.body.storeId,
+            writer_id: decodedToken.id,
+            description: req.body.description,
+            img_scr: req.body.imgSrc
+        }
+        return Reviews.create(review)
+            .then(review => res.status(200).send({ review, message: '리뷰가 성공적으로 등록되었습니다.' }))
             .catch(error => res.status(400).send(error));
     }
 };
