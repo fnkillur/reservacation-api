@@ -39,6 +39,7 @@ router.post('/reviews', reviewController.add)
 
 // Booking Router
 router.get('/bookings/:storeId/waitingCount', bookingController.getWaitingCount);
+router.get('/bookings/:storeId', bookingController.getByStoreAndUserId);
 router.post('/bookings/:storeId', bookingController.add);
 
 module.exports = router;
