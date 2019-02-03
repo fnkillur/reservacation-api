@@ -1,3 +1,6 @@
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
+
 const Stores = require('../models').Stores;
 const StoreImages = require('../models').StoreImages;
 
@@ -5,6 +8,27 @@ module.exports = {
     list(req, res) {
         return Stores.findAll({
             order: [['id', 'DESC']]
+        })
+            .then(stores => res.status(200).send(stores))
+            .catch(error => res.status(400).send(error));
+    },
+
+    getByPosition(req, res) {
+        let bot = parseFloat(req.query.bot);
+        let left = parseFloat(req.query.left);
+        let top = parseFloat(req.query.top);
+        let right = parseFloat(req.query.right);
+        
+        return Stores.findAll({
+            where: {
+                latitude: {
+                    [Op.between]: [bot, top]
+                },
+                longitude: {
+                    [Op.between]: [left, right]
+                }
+            },
+            order: [['store_name', 'ASC']]
         })
             .then(stores => res.status(200).send(stores))
             .catch(error => res.status(400).send(error));

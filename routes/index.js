@@ -27,6 +27,7 @@ router.post('/auth/newToken', authController.getNewToken);
 
 // Store Router
 router.get('/stores', storeController.list);
+router.get('/stores/around', storeController.getByPosition);
 router.get('/store/:id', storeController.getById);
 router.post('/stores', storeController.add);
 
