@@ -5,7 +5,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var cors = require('cors');
 
-var whitelist = ['http://localhost:3000', 'http://127.0.0.1:3000'];
+var whitelist = ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://reservacation.co.kr', 'http://www.reservacation.co.kr'];
 
 var corsOptions = {
 
