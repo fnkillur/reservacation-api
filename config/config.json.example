@@ -1,0 +1,28 @@
+{
+    "development": {
+        "username": "root",
+        "password": "reservacation",
+        "database": "reservacation",
+        "host": "10.0.0.40",
+        "dialect": "mysql",
+        "pool": {
+            "max": 20,
+            "min": 0,
+            "idle": 5000
+        },
+        "operatorsAliases": false
+    },
+    "test": {
+        "username": "root",
+        "password": "reservacation",
+        "database": "reservacation",
+        "host": "10.0.0.40",
+        "dialect": "mysql",
+        "pool": {
+            "max": 20,
+            "min": 0,
+            "idle": 5000
+        },
+        "operatorsAliases": false
+    }
+}
