@@ -31,7 +31,10 @@ module.exports = {
                 allowNull: false,
                 type: Sequelize.DATE
             }
-        });
+        }, {
+                charset: 'utf8mb4',
+                collate: 'utf8mb4_unicode_ci'
+            });
     },
     down: (queryInterface, Sequelize) => {
         return queryInterface.dropTable('Bookings');
