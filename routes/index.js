@@ -1,5 +1,21 @@
 var express = require('express');
 var router = express.Router();
+var aws = require('aws-sdk');
+aws.config.loadFromPath(__dirname + '/../config/awsConfig.json');
+var s3 = new aws.S3();
+var multer = require('multer')
+var multerS3 = require('multer-s3')
+
+var upload = multer({
+    storage: multerS3({
+        s3: s3,
+        bucket: 'reservacation',
+        key: function (req, file, cb) {
+            cb(null, Date.now().toString() + '_' + file.originalname);
+        },
+        acl: 'public-read'
+    })
+});
 
 // Controller
 const userController = require('../controllers').user;
@@ -36,7 +52,7 @@ router.get('/storeImages/:storeId', storeImageController.getByStoreId);
 
 // Review Router
 router.get('/reviews/:storeId', reviewController.getByStoreId);
-router.post('/reviews', reviewController.add)
+router.post('/reviews', upload.single('reviewImg'), reviewController.add)
 
 // Booking Router
 router.get('/bookings/:storeId/waitingCount', bookingController.getWaitingCount);

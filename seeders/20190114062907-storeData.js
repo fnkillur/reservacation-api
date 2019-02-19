@@ -100,6 +100,34 @@ module.exports = {
             img_src: 'https://hilton.co.kr/static/upload/hotel_main_20180808102604_lg_sp.jpg',
             createdAt: '2019-01-14 14:12:24',
             updatedAt: '2019-01-14 14:12:24'
+        }, {
+            store_name: '테스트용 강남 카페1',
+            address: '서울특별시 서초구 주흥9길',
+            detail_address: '26-5',
+            ceo_name: '김태영',
+            ceo_email: 'fnkillur@naver.com',
+            ceo_sms: '010-3953-5207',
+            store_tel: '031-211-3565',
+            store_description: '카페 테스트 강남',
+            latitude: 37.508882,
+            longitude: 127.014953,
+            img_src: 'https://hilton.co.kr/static/upload/hotel_main_20180808102604_lg_sp.jpg',
+            createdAt: '2019-01-14 14:12:24',
+            updatedAt: '2019-01-14 14:12:24'
+        }, {
+            store_name: '테스트용 강남 카페2',
+            address: '서울특별시 서초구 주흥9길',
+            detail_address: '20',
+            ceo_name: '김태영',
+            ceo_email: 'fnkillur@naver.com',
+            ceo_sms: '010-3953-5207',
+            store_tel: '031-211-3565',
+            store_description: '카페 테스트 강남 2',
+            latitude: 37.510882,
+            longitude: 126.019953,
+            img_src: 'https://hilton.co.kr/static/upload/hotel_main_20180808102604_lg_sp.jpg',
+            createdAt: '2019-01-14 14:12:24',
+            updatedAt: '2019-01-14 14:12:24'
         }], {});
     },
 

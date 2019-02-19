@@ -17,6 +17,7 @@ npm-debug.log
 
 config/config.json
 config/jwt.js
+config/awsConfig.json
 
 # vagrant
 .vagrant
