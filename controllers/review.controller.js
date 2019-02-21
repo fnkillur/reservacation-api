@@ -40,5 +40,15 @@ module.exports = {
         return Reviews.create(review)
             .then(review => res.status(200).send({ review, message: '리뷰가 성공적으로 등록되었습니다.' }))
             .catch(error => res.status(400).send(error));
+    },
+
+    getById(req, res) {
+        return Reviews.findOne({
+            where: {
+                id: req.params.id
+            }
+        })
+            .then(review => res.status(200).send(review))
+            .catch(error => res.status(400).send(error));
     }
 };

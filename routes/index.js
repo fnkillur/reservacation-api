@@ -32,10 +32,10 @@ router.get('/', function (req, res) {
 
 // User Router
 router.get('/users', userController.list);
-router.get('/user/:id', userController.getById);
+router.get('/users/:id', userController.getById);
 router.post('/users', userController.add);
-router.put('/user/:id', userController.update);
-router.delete('/user/:id', userController.delete);
+router.put('/users/:id', userController.update);
+router.delete('/users/:id', userController.delete);
 
 // Auth Router
 router.post('/auth/token', authController.getToken);
@@ -44,14 +44,15 @@ router.post('/auth/newToken', authController.getNewToken);
 // Store Router
 router.get('/stores', storeController.list);
 router.get('/stores/around', storeController.getByPosition);
-router.get('/store/:id', storeController.getById);
+router.get('/stores/:id', storeController.getById);
 router.post('/stores', storeController.add);
 
 // StoreImage Router
 router.get('/storeImages/:storeId', storeImageController.getByStoreId);
 
 // Review Router
-router.get('/reviews/:storeId', reviewController.getByStoreId);
+router.get('/stores/:storeId/reviews', reviewController.getByStoreId);
+router.get('/reviews/:id', reviewController.getById);
 router.post('/reviews', upload.single('reviewImg'), reviewController.add)
 
 // Booking Router
