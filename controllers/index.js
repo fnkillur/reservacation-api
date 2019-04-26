@@ -6,10 +6,10 @@ const auth = require('./auth.controller');
 const booking = require('./booking.controller');
 
 module.exports = {
-    user,
-    store,
-    review,
-    storeImage,
-    auth,
-    booking
+  user,
+  store,
+  review,
+  storeImage,
+  auth,
+  booking
 };

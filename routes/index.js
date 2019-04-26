@@ -7,14 +7,14 @@ var multer = require('multer')
 var multerS3 = require('multer-s3')
 
 var upload = multer({
-    storage: multerS3({
-        s3: s3,
-        bucket: 'reservacation',
-        key: function (req, file, cb) {
-            cb(null, Date.now().toString() + '_' + file.originalname);
-        },
-        acl: 'public-read'
-    })
+  storage: multerS3({
+    s3: s3,
+    bucket: 'reservacation',
+    key: function (req, file, cb) {
+      cb(null, Date.now().toString() + '_' + file.originalname);
+    },
+    acl: 'public-read'
+  })
 });
 
 // Controller
@@ -27,7 +27,7 @@ const bookingController = require('../controllers').booking;
 
 // GET home Page
 router.get('/', function (req, res) {
-    res.render('index', { title: 'reservacation-api' });
+  res.render('index', {title: 'reservacation-api'});
 });
 
 // User Router

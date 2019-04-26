@@ -14,18 +14,13 @@ module.exports = {
   },
 
   getByPosition(req, res) {
-    const bot = parseFloat(req.query.bot);
-    const left = parseFloat(req.query.left);
-    const top = parseFloat(req.query.top);
-    const right = parseFloat(req.query.right);
-
     return Stores.findAll({
       where: {
         latitude: {
-          [Op.between]: [bot, top]
+          [Op.between]: [parseFloat(req.query.bot), parseFloat(req.query.top)]
         },
         longitude: {
-          [Op.between]: [left, right]
+          [Op.between]: [parseFloat(req.query.left), parseFloat(req.query.right)]
         }
       },
       order: [['store_name', 'ASC']]
@@ -56,8 +51,8 @@ module.exports = {
       .catch(error => res.status(400).send(error));
   },
 
-  add: (req, res) => {
-    const form = {
+  add(req, res) {
+    return Stores.create({
       email: req.body.email,
       sms: req.body.sms,
       address: req.body.address,
@@ -66,9 +61,7 @@ module.exports = {
       ceo_name: req.body.ceo_name,
       latitude: req.body.latitude,
       longitude: req.body.longitude,
-    };
-    Stores
-      .create(form)
+    })
       .then(partner => res.status(201).send(partner))
       .catch(error => res.status(400).send(error));
   },
