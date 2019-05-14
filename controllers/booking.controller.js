@@ -8,7 +8,7 @@ const Bookings = require('../models').Bookings;
 
 const getHashId = req => {
   const decodedToken = jwt.verify(req.headers.authorization.split(' ')[1], jwtConfig.secret);
-  return parseInt(decodedToken.id);
+  return parseInt(decodedToken.id, 10);
 };
 
 
@@ -43,7 +43,7 @@ module.exports = {
 
     return Bookings.findOne({
       where: {
-        store_id: parseInt(req.params.storeId),
+        store_id: parseInt(req.params.storeId, 10),
         user_id: getHashId(req),
         createdAt: {
           [Op.gt]: new Date(new Date().toISOString().substr(0, 10).replace('T', ' '))
@@ -61,10 +61,10 @@ module.exports = {
     }
 
     const booking = {
-      store_id: parseInt(req.params.storeId),
+      store_id: parseInt(req.params.storeId, 10),
       user_id: getHashId(req),
       status: BOOKING_STATUS['pending'],
-      customer_count: parseInt(req.body.customerCount),
+      customer_count: parseInt(req.body.customerCount, 10),
     };
 
     return Bookings.findAll({

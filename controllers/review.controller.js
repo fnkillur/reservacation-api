@@ -6,8 +6,8 @@ const path = require('path');
 
 module.exports = {
   getByStoreId(req, res) {
-    const perPageNo = parseInt(req.query.perPageNo || 20);
-    const pageNo = parseInt(req.query.pageNo || 0);
+    const perPageNo = parseInt(req.query.perPageNo || 20, 10);
+    const pageNo = parseInt(req.query.pageNo || 0, 10);
 
     return Reviews.findAndCountAll({
       where: {
